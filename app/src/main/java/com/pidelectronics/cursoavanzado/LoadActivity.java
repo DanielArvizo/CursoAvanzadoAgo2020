@@ -69,7 +69,13 @@ public class LoadActivity extends AppCompatActivity {
                     public void run() {
                         //Aqui nos regresamos al hilo principal
                         txtInfo.setText(getString(R.string.espere));
-                        startActivity(new Intent(context,LoginActivity.class));
+                        myData myData = new myData(context);
+                        boolean acceso = myData.getLogeo();
+                        if (acceso){
+                            startActivity(new Intent(context,MainActivity.class));
+                        }else {
+                            startActivity(new Intent(context, LoginActivity.class));
+                        }
                     }
                 });
             }

@@ -6,4 +6,12 @@
     <string name="descripcionContenido">Imagen de la app curso avanzado</string>
     <string name="preparando">Preparando aplicacion</string>
     <string name="espere">Un momento por favor</string>
+    <string name="accesar">Accesar</string>
+    <string name="ingresepass">Ingrese contraseña:</string>
+    <string name="ingreseusuario">Ingrese usuario:</string>
+    <string name="faltaUsuario">Favor de ingresar un usuario para continuar</string>
+    <string name="faltaPassword">Favor de ingresar su contraseña para continuar</string>
+    <string name="accesoCorrecto">Acceso correcto!</string>
+    <string name="accesoIncorrecto">Usuario y/o contraseña incorrecto, intente nuevamente</string>
+
 </resources>
