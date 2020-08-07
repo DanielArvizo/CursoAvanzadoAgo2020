@@ -1,14 +1,25 @@
 package com.pidelectronics.cursoavanzado;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Objects;
+
+import static com.pidelectronics.cursoavanzado.metodosGlobales.obtenerVersionApp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     Menu menuActivity;
     //Variables
     Context context;
+    //Objetos y utilidades:
+    AlertDialog acercaDeDialogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private void configuracionesIniciales(){
         mainToolbar = findViewById(R.id.toolbarMain);
         setSupportActionBar(mainToolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         context = MainActivity.this;
     }
 
@@ -47,13 +61,29 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId(); //obtenemos el id del item presionado por el usuario
         switch (id){
             case R.id.mainMenu_logout:
-                Toast.makeText(context,"Logout presionado!",Toast.LENGTH_SHORT).show();
+                myData myData = new myData(context);
+                myData.setLogeo(false);
+                startActivity(new Intent(context,LoadActivity.class));
                 break;
             case R.id.mainMenu_aboutApp:
-                Toast.makeText(context,"Acerca de la app presionado!",Toast.LENGTH_SHORT).show();
+                mostrarCuadroDialogoAcercaDe();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void mostrarCuadroDialogoAcercaDe(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        ViewGroup parent = findViewById(R.id.parent);
+        View vista = getLayoutInflater().inflate(R.layout.acerca_de_dialogo,parent,false);
+        TextView txtVersion = vista.findViewById(R.id.txtDialogoVersion);
+        TextView txtSigueme = vista.findViewById(R.id.txtSiguemeFacebook);
+        Linkify.addLinks(txtSigueme,Linkify.WEB_URLS);
+        Button btnLlamar = vista.findViewById(R.id.btnLlamarDesarrollador); //TODO falta codigo para realizar llamada
+        txtVersion.setText(obtenerVersionApp(context));
+        builder.setView(vista); //se configura la vista en el builder
+        acercaDeDialogo = builder.create(); //se crea el cuadro de dialogo a apartir del builder
+        acercaDeDialogo.show(); //muestra el cuadro de dialogo
     }
 
 
