@@ -20,5 +20,8 @@
     <string name="empresa">PID Electronics</string>
     <string name="desarrollador">By Ing. Daniel Rodriguez</string>
     <string name="sigueme">Sigueme en facebook:\nhttps://www.facebook.com/danniel.rodarvi</string>
+    <string name="permisos">Conceder permisos</string>
+    <string name="alertaPermisos">Esta aplicacion necesita de ciertos permisos, activelos para
+    continuar!</string>
 
 </resources>
