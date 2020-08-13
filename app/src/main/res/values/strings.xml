@@ -23,5 +23,7 @@
     <string name="permisos">Conceder permisos</string>
     <string name="alertaPermisos">Esta aplicacion necesita de ciertos permisos, activelos para
     continuar!</string>
+    <string name="leerQR">Leer codigo QR</string>
+    <string name="codigoEscaneado">Codigo QR escaneado:</string>
 
 </resources>

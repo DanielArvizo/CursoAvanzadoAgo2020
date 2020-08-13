@@ -20,12 +20,15 @@ import android.widget.Toast;
 import java.util.Objects;
 
 import static com.pidelectronics.cursoavanzado.metodosGlobales.obtenerVersionApp;
+import static com.pidelectronics.cursoavanzado.variablesGlobales.codigoQR;
 
 public class MainActivity extends AppCompatActivity {
 
     //Vistas
     Toolbar mainToolbar;
     Menu menuActivity;
+    Button btnQr;
+    TextView txtCodigoQr;
     //Variables
     Context context;
     //Objetos y utilidades:
@@ -38,11 +41,28 @@ public class MainActivity extends AppCompatActivity {
         configuracionesIniciales();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        btnQr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context,QrActivity.class));
+            }
+        });
+        if (!codigoQR.isEmpty()){ //comprueba que la variable codigoQR no este vacia
+            String codigoLeido = getString(R.string.codigoEscaneado) + " " + codigoQR;
+            txtCodigoQr.setText(codigoLeido);
+        }
+    }
+
     private void configuracionesIniciales(){
         mainToolbar = findViewById(R.id.toolbarMain);
         setSupportActionBar(mainToolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         context = MainActivity.this;
+        btnQr = findViewById(R.id.btnLeerQr);
+        txtCodigoQr = findViewById(R.id.txtCodigoQR);
     }
 
     /*
