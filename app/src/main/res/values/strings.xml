@@ -25,5 +25,20 @@
     continuar!</string>
     <string name="leerQR">Leer codigo QR</string>
     <string name="codigoEscaneado">Codigo QR escaneado:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="pass">Password:</string>
+    <string name="correo">Correo:</string>
+    <string name="Masculion" />
+    <string name="masculino">Masculino</string>
+    <string name="femenino">Femenino</string>
+    <string name="nodecir">Prefiero no decir</string>
+    <string name="admin">Administrador</string>
+    <string name="usuarionormal">Usuario Normal</string>
+    <string name="agregarUsuario">Agregar usuario</string>
+    <string name="usuariosAPP">Usuarios de la app:</string>
+    <string name="daniel">Daniel</string>
+    <string name="correoEjemplo">example@example.com</string>
+    <string name="id">ID:</string>
+    <string name="verUsuarios">Ver Usuarios</string>
 
 </resources>

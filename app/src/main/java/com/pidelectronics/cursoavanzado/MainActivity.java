@@ -21,6 +21,7 @@ import java.util.Objects;
 
 import static com.pidelectronics.cursoavanzado.metodosGlobales.obtenerVersionApp;
 import static com.pidelectronics.cursoavanzado.variablesGlobales.codigoQR;
+import static com.pidelectronics.cursoavanzado.variablesGlobales.usuariosApp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -87,6 +88,16 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.mainMenu_aboutApp:
                 mostrarCuadroDialogoAcercaDe();
+                break;
+            case R.id.mainMenu_AgregarUsuario:
+                startActivity(new Intent(context,AgregarUsuarioActivity.class));
+                break;
+            case R.id.mainMenu_VerUsuarios:
+                if (usuariosApp == null){
+                    Toast.makeText(context,"No hay usuarios que mostrar",Toast.LENGTH_SHORT).show();
+                }else {
+                    startActivity(new Intent(context, UsuariosActivity.class));
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);

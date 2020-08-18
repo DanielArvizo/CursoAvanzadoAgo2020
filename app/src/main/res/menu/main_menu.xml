@@ -2,6 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/mainMenu_AgregarUsuario"
+        android:title="@string/agregarUsuario"/>
+
+    <item
+        android:id="@+id/mainMenu_VerUsuarios"
+        android:title="@string/verUsuarios"/>
+
+    <item
         android:id="@+id/mainMenu_logout"
         android:title="@string/logout"/>
 
