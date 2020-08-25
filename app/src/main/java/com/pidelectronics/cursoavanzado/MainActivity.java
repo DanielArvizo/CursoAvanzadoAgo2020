@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import java.util.Objects;
 
+import static com.pidelectronics.cursoavanzado.metodosGlobales.leerBaseDeDatos;
 import static com.pidelectronics.cursoavanzado.metodosGlobales.obtenerVersionApp;
 import static com.pidelectronics.cursoavanzado.variablesGlobales.codigoQR;
 import static com.pidelectronics.cursoavanzado.variablesGlobales.usuariosApp;
@@ -93,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(context,AgregarUsuarioActivity.class));
                 break;
             case R.id.mainMenu_VerUsuarios:
-                if (usuariosApp == null){
+                leerBaseDeDatos(context);
+                if (usuariosApp.size() == 0){
                     Toast.makeText(context,"No hay usuarios que mostrar",Toast.LENGTH_SHORT).show();
                 }else {
                     startActivity(new Intent(context, UsuariosActivity.class));

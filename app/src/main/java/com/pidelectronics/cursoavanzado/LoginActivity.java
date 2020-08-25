@@ -11,10 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Timer;
 
-import static com.pidelectronics.cursoavanzado.variablesGlobales.passwordTemporal;
-import static com.pidelectronics.cursoavanzado.variablesGlobales.usuarioTemporal;
+import static com.pidelectronics.cursoavanzado.metodosGlobales.leerBaseDeDatos;
+import static com.pidelectronics.cursoavanzado.variablesGlobales.passwordAdmin;
+import static com.pidelectronics.cursoavanzado.variablesGlobales.usuarioAdmin;
+import static com.pidelectronics.cursoavanzado.variablesGlobales.usuariosApp;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -49,8 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                 }else if (password.isEmpty()){ //Compara si el password esta vacio
                     Toast.makeText(context,getString(R.string.faltaPassword), Toast.LENGTH_SHORT).show();
                 }else{ //Entra aqui si usuario y password no estan vacios
-                    if (usuario.equals(usuarioTemporal)){
-                        if (password.equals(passwordTemporal)){
+                    if (usuarioExisteEnBaseDeDatos(usuario) || usuario.equals(usuarioAdmin)){
+                        if (passwordExisteEnBaseDeDatos(password) || password.equals(passwordAdmin)){
                             Toast.makeText(context,getString(R.string.accesoCorrecto),Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(context,MainActivity.class));
                             myData myData = new myData(context);
@@ -65,6 +66,25 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private boolean usuarioExisteEnBaseDeDatos(String usuarioIngresado){
+        leerBaseDeDatos(context);
+        for(usuario u: usuariosApp){
+            if (usuarioIngresado.equals(u.getNombre())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean passwordExisteEnBaseDeDatos(String passwordIngresado){
+        for (usuario u: usuariosApp){
+            if (passwordIngresado.equals(u.getPassword())){
+                return true;
+            }
+        }
+        return false;
     }
 
     private void configuracionesIniciales(){

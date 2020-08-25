@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static com.pidelectronics.cursoavanzado.variablesGlobales.usuariosApp;
+import static com.pidelectronics.cursoavanzado.metodosGlobales.agregarUsuarioABaseDeDatos;
 
 public class AgregarUsuarioActivity extends AppCompatActivity {
 
@@ -101,11 +101,8 @@ public class AgregarUsuarioActivity extends AppCompatActivity {
 
 
     private void agregarUsuario(String nombre, String password, String correo, String sexo, String rol){
-        if (usuariosApp == null){
-            usuariosApp = new ArrayList<>(); //inicializamos el arreglo
-        }
-        usuariosApp.add(new usuario(id,nombre,password,sexo,rol,correo)); //agregar 1 usuario al arreglo
-        id++; //incrementa la variable id en 1
+        usuario user = new usuario(0,nombre,password,sexo,rol,correo);
+        agregarUsuarioABaseDeDatos(context,user);
         mostrarToast("Usuario agregado correctamente!!!");
         startActivity(new Intent(context,MainActivity.class));
     }
